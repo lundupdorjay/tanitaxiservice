@@ -29,60 +29,59 @@ const [active, setActive] = React.useState(
 
 
  
- <div className="m-20 flex justify-around  mt-10 mb-10">
-      <div className="w-[50%]">
+<div className="m-4 md:m-20 flex flex-col md:flex-row justify-around gap-10 mt-10 mb-10">
+  {/* Left section */}
+  <div className="w-full md:w-1/2">
+    <h1 className="font-bold text-3xl md:text-4xl mb-6">{detail.name}</h1>
 
-        <h1 className="bold text-4xl mb-8">{detail.name}</h1>
-        
-
-        {detail.itinery.map((Item,index)=>
-      (    <div key={index}>
-
+    {detail.itinery.map((Item, index) => (
+      <div key={index}>
         {Object.keys(Item).map((dayKey) => (
           <div key={dayKey}>
-            <h3 className="bold text-[#FF9000] text-xl">{Item[dayKey].Day}  :  {Item[dayKey].heading}</h3>
-            
-            <p className="text-x text-justify p-5">{Item[dayKey].description}</p>
-            <br/>
+            <h3 className="font-semibold text-[#FF9000] text-lg md:text-xl">{Item[dayKey].Day}: {Item[dayKey].heading}</h3>
+            <p className="text-sm text-justify p-4">{Item[dayKey].description}</p>
+            <br />
           </div>
         ))}
       </div>
+    ))}
+  </div>
 
+  {/* Right section */}
+  <div className="w-full md:w-1/2 flex flex-col space-y-4">
+  {/* Main Image */}
+  <div className="flex-shrink-0">
+    <img
+      className="w-full rounded-lg object-cover object-center"
+      src={active}
+      alt=""
+    />
+  </div>
 
-        ))
-
-        }
-       
+  {/* Thumbnail Grid */}
+  <div className="px-2 md:px-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+    {data.map(({ imgelink }, index) => (
+      <div key={index}>
+        <img
+          onClick={() => setActive(imgelink)}
+          src={imgelink}
+          className="h-16 w-16 md:h-20 md:w-20 cursor-pointer rounded-lg object-cover object-center"
+          alt="gallery-image"
+        />
       </div>
-      <div className=" w-[50%]grid gap-4 ">
-          <div>
-            <img
-              className="h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[480px]"
-              src={active}
-              alt=""
-            />
-          </div>
-          <div className=" p-10 grid grid-cols-5 gap-4">
-            {data.map(({ imgelink }, index) => (
-              <div key={index}>
-                <img
-                  onClick={() => setActive(imgelink)}
-                  src={imgelink}
-                  className="h-20 w-20 max-w-full cursor-pointer rounded-lg object-cover object-center"
-                  alt="gallery-image"
-                />
-              </div>
-            ))}
-          </div>
+    ))}
+  </div>
 
-          <div className="flex justify-center">
-                  <a href="https://wa.me/917780861175">
-                    <img className="" src={whatsAppButton} href=""></img>
-                  
-                    </a></div>
-      </div>
+  {/* WhatsApp Button */}
+  <div className="flex justify-center">
+    <a href="https://wa.me/917780861175">
+      <img src={whatsAppButton} alt="WhatsApp Button" />
+    </a>
+  </div>
+</div>
 
- </div>
+</div>
+
   
 <Footer/>
 
