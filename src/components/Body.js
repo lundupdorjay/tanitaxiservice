@@ -31,7 +31,7 @@ const Body= ()=>{
 
 </div>
 
-<div className="relative w-full overflow-hidden max-h-[60vh]">
+<div className="relative w-full overflow-hidden max-h-[60vh] hidden md:block">
   <img
     className="w-full h-auto rounded-lg"
     src="https://www.bookmytaxi.co/storage/sliders/February2019/R3XkRthvFl4SMyWqAXY9.jpg"
